@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 
 const goalSchema = mongoose.Schema(
   {
+    // user assosiated with a text field
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
     text: {
       type: String,
       required: [true, "please add a text value"],

@@ -9,10 +9,13 @@ const {
 
 const routes = express.Router();
 
-routes.get("/", getData);
-routes.post("/", addData);
-routes.put("/:id", editData);
-routes.delete("/:id", deleteData);
-routes.get("/:id", getOneData);
+const protect = require('../middleware/authMiddleware')
+
+
+routes.get("/",protect, getData);
+routes.post("/",protect, addData);
+routes.put("/:id",protect, editData);
+routes.delete("/:id",protect, deleteData);
+routes.get("/:id",protect, getOneData);
 
 module.exports = routes;
